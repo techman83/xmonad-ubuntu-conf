@@ -69,3 +69,6 @@ fi
 # device
 # TOUCHPAD_ID=`xinput | grep 'Synaptics TouchPad' | cut -f 2 | cut -f 2 -d =`
 # xinput set-prop $TOUCHPAD_ID "Device Enabled" 0
+
+# ZOMG Why is touch-to-tap on by default? Let's kill it now!
+synclient MaxTapTime=0

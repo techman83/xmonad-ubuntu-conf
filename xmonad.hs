@@ -203,12 +203,13 @@ myLayouts =
 
 myKeyBindings =
   [
-    ((myModMask, xK_b), sendMessage ToggleStruts)
+    ((myModMask, xK_b), sendMessage ToggleStruts)       -- Hides xmobar
     , ((myModMask, xK_a), sendMessage MirrorShrink)
     , ((myModMask, xK_z), sendMessage MirrorExpand)
     , ((myModMask, xK_p), spawn "synapse")
     , ((myModMask .|. mod1Mask, xK_space), spawn "synapse")
     , ((myModMask, xK_u), focusUrgent)
+    , ((myModMask .|. mod1Mask, xK_l), spawn "slock")    -- Screen lock
     , ((0, 0x1008FF12), spawn "amixer -q set Master toggle")
     , ((0, 0x1008FF11), spawn "amixer -q set Master 10%-")
     , ((0, 0x1008FF13), spawn "amixer -q set Master 10%+")

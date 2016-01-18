@@ -99,9 +99,16 @@ stalonetray \
 # certificates and the like.
 gnome-keyring-daemon --start --components=gpg,pkcs11,secrets,ssh
 
-# Remap caps lock to left control. This is not strictly speaking
-# xmonad related, but it's handy if you're a vim user.
-setxkbmap -option 'ctrl:nocaps'
+# Swap Windows and Capslock keys, because I like to use
+# Capslock as the modifier key.
+
+xmodmap -e "keycode 66 = Super_L"
+xmodmap -e "keycode 133 = Caps_Lock"
+
+xmodmap -e "clear Mod4"
+xmodmap -e "clear Lock"
+
+xmodmap -e "add Mod4 = Super_L"
 
 # Now, finally, start xmonad
 exec xmonad

@@ -4,7 +4,9 @@
 # to run xmonad and some associated programs.
 # 
 # Author: David Brewer
-# Repository: https://github.com/davidbrewer/xmonad-ubuntu-conf
+# Mods by: Paul Fenwick
+# Orig Repository: https://github.com/davidbrewer/xmonad-ubuntu-conf
+# This Repository: https://github.com/pjf/xmonad-ubuntu-conf
 
 #
 # GENERAL INITIALIZATION

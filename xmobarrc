@@ -36,7 +36,7 @@ Config {
 
     -- Gather and format memory usage information
     Run Memory [
-      "-t","Mem: <usedratio>%"
+      "-t","Mem: <used>/<total> (<usedratio>%)"
     ] 10,
 
     -- Date formatting

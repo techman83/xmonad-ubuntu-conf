@@ -264,12 +264,16 @@ myManagementHooks = [
   resource =? "synapse" --> doIgnore
   , resource =? "stalonetray" --> doIgnore
   , className =? "rdesktop" --> doFloat
+  , className =? "Vimperator" --> doF (W.shift "7:FFox")
+  , className =? "Chromium" --> doF (W.shift "1:FBook")
+  , className =? "Steam" --> doF (W.shift "3:Games")
+
   , (className =? "Komodo IDE") --> doF (W.shift "5:Dev")
   , (className =? "Komodo IDE" <&&> resource =? "Komodo_find2") --> doFloat
   , (className =? "Komodo IDE" <&&> resource =? "Komodo_gotofile") --> doFloat
   , (className =? "Komodo IDE" <&&> resource =? "Toplevel") --> doFloat
-  , (className =? "Empathy") --> doF (W.shift "7:Chat")
-  , (className =? "Pidgin") --> doF (W.shift "7:Chat")
+  , (className =? "Empathy") --> doF (W.shift "9:Chat")
+  , (className =? "Pidgin") --> doF (W.shift "9:Chat")
   , (className =? "Gimp-2.8") --> doF (W.shift "9:Pix")
   ]
 

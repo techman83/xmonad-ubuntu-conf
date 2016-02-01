@@ -91,7 +91,7 @@ myUrgentWSRight = "}"
 myWorkspaces =
   [
     "7:FFox",  "8:Mail", "9:Chat",
-    "4:Dev",   "5:Dev",  "6:Dev",
+    "4:Dev",   "5:Dev",  "6:Music",
     "1:FBook", "2:Dev",  "3:Games",
     "0:Dev",   "Extr1",  "Extr2"
   ]
@@ -267,6 +267,7 @@ myManagementHooks = [
   , className =? "Vimperator" --> doF (W.shift "7:FFox")
   , className =? "Chromium" --> doF (W.shift "1:FBook")
   , className =? "Steam" --> doF (W.shift "3:Games")
+  , className =? "Banshee" --> doF (W.shift "6:Music")
 
   , (className =? "Komodo IDE") --> doF (W.shift "5:Dev")
   , (className =? "Komodo IDE" <&&> resource =? "Komodo_find2") --> doFloat

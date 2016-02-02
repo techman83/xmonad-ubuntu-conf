@@ -267,6 +267,9 @@ myManagementHooks = [
   , className =? "Vimperator" --> doF (W.shift "7:FFox")
   , className =? "Chromium" --> doF (W.shift "1:FBook")
   , className =? "Steam" --> doF (W.shift "3:Games")
+  , className =? "banshee" --> doF (W.shift "Extr1")
+  -- sometimes the class name is banshee-1
+  , className =? "banshee-1" --> doF (W.shift "Extr1")
 
   , (className =? "Komodo IDE") --> doF (W.shift "5:Dev")
   , (className =? "Komodo IDE" <&&> resource =? "Komodo_find2") --> doFloat

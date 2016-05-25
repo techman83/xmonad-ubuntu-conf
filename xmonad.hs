@@ -92,7 +92,7 @@ myWorkspaces =
   [
     "7:FFox",  "8:Mail", "9:Chat",
     "4:Dev",   "5:Dev",  "6:Music",
-    "1:FBook", "2:Dev",  "3:Games",
+    "1:FBook", "2:Pix",  "3:Games",
     "0:Dev",   "Extr1",  "Extr2"
   ]
 
@@ -173,7 +173,7 @@ gimpLayout = smartBorders(avoidStruts(ThreeColMid 1 (3/100) (3/4)))
 -- layouts.
 myLayouts =
   onWorkspace "9:Chat" chatLayout
-  $ onWorkspace "9:Pix" gimpLayout
+  $ onWorkspace "2:Pix" gimpLayout
   $ defaultLayouts
 
 
@@ -277,7 +277,9 @@ myManagementHooks = [
   , (className =? "Komodo IDE" <&&> resource =? "Toplevel") --> doFloat
   , (className =? "Empathy") --> doF (W.shift "9:Chat")
   , (className =? "Pidgin") --> doF (W.shift "9:Chat")
-  , (className =? "Gimp-2.8") --> doF (W.shift "9:Pix")
+  , (className =? "Gimp-2.8") --> doF (W.shift "2:Pix")
+  , (className =? "Gimp") --> doF (W.shift "2:Pix")
+  , (className =? "gimp") --> doF (W.shift "2:Pix")
   ]
 
 

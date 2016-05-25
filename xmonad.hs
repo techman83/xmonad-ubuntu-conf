@@ -203,7 +203,7 @@ myLayouts =
 
 myKeyBindings =
   [
-    ((myModMask, xK_b), sendMessage ToggleStruts)       -- Hides xmobar
+      ((myModMask, xK_b), sendMessage ToggleStruts)       -- Hides xmobar
     , ((myModMask, xK_a), sendMessage MirrorShrink)
     , ((myModMask, xK_z), sendMessage MirrorExpand)
     , ((myModMask, xK_p), spawn "synapse")
@@ -213,6 +213,10 @@ myKeyBindings =
     , ((0, 0x1008FF12), spawn "amixer -q set Master toggle")
     , ((0, 0x1008FF11), spawn "amixer -q set Master 10%-")
     , ((0, 0x1008FF13), spawn "amixer -q set Master 10%+")
+
+    -- P57W workarounds. The Fn-keys on my laptop do squat.
+    , ((myModMask, xK_F3), spawn "xbacklight -dec 10")
+    , ((myModMask, xK_F4), spawn "xbacklight -inc 10")
   ]
 
 

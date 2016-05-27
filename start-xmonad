@@ -111,8 +111,10 @@ xmodmap -e "clear Lock"
 xmodmap -e "add Mod4 = Super_L"
 
 # Set the extra backslash key on my keyboard to
-# be the compose key instead.
+# be the compose key instead. Ditto for the menu
+# key on my new laptop.
 xmodmap -e "keycode 94 = Multi_key"
+xmodmap -e "keycode 135 = Multi_key"
 
 # Now, finally, start xmonad
 exec xmonad

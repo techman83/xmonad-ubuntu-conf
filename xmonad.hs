@@ -210,9 +210,18 @@ myKeyBindings =
     , ((myModMask .|. mod1Mask, xK_space), spawn "synapse")
     , ((myModMask, xK_u), focusUrgent)
     , ((myModMask .|. mod1Mask, xK_l), spawn "slock")    -- Screen lock
+
+    -- Volume control keys
     , ((0, 0x1008FF12), spawn "amixer -q set Master toggle")
     , ((0, 0x1008FF11), spawn "amixer -q set Master 10%-")
     , ((0, 0x1008FF13), spawn "amixer -q set Master 10%+")
+
+    -- I use Banshee as my music player. You may wish to bind the multimedia
+    -- keys to something different.
+    , ((0, 0x1008FF14), spawn "banshee --toggle-playing")  -- Pause/Play
+    , ((0, 0x1008FF15), spawn "banshee --stop")            -- Stop
+    , ((0, 0x1008FF16), spawn "banshee --previous")        -- Prev
+    , ((0, 0x1008FF17), spawn "banshee --next")            -- Next
 
     -- P57W workarounds. The Fn-keys on my laptop do squat.
     , ((myModMask, xK_F3), spawn "xbacklight -dec 10")

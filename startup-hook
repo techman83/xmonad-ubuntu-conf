@@ -72,3 +72,6 @@ cat /dev/null | ssh-add &
 
 # ZOMG Why is touch-to-tap on by default? Let's kill it now!
 synclient MaxTapTime=0
+
+# Why is my touchpad so large? I wish it were smaller
+synclient PalmDetect=1

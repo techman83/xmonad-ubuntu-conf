@@ -293,6 +293,7 @@ myManagementHooks = [
   , (className =? "Gimp-2.8") --> doF (W.shift "2:Pix")
   , (className =? "Gimp") --> doF (W.shift "2:Pix")
   , (className =? "gimp") --> doF (W.shift "2:Pix")
+  , (className =? "Thunderbird") --> doF (W.shift "8:Mail")
   ]
 
 

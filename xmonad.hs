@@ -222,7 +222,6 @@ myKeyBindings =
     , ((0, 0x1008FF15), spawn "amixer -q set Master 10%+")      -- Fn-up
     , ((0, 0x1008FF16), spawn "banshee --previous")             -- Fn-left
     , ((0, 0x1008FF17), spawn "banshee --next")                 -- Fn-right
-    , ((myModMask, xK_space), spawn "banshee --toggle-playing") -- Super-Space
 
     -- P57W workarounds. The Fn-keys on my laptop do squat.
     , ((myModMask, xK_F3), spawn "xbacklight -dec 10")

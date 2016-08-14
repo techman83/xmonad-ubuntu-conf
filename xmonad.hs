@@ -226,6 +226,9 @@ myKeyBindings =
     -- P57W workarounds. The Fn-keys on my laptop do squat.
     , ((myModMask, xK_F3), spawn "xbacklight -dec 10")
     , ((myModMask, xK_F4), spawn "xbacklight -inc 10")
+
+    -- 1337 H4xX0r terminal (mod-x)
+    , ((myModMask, xK_x), spawn "/home/pjf/bin/cool-retro-term")
   ]
 
 

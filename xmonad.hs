@@ -229,6 +229,9 @@ myKeyBindings =
 
     -- 1337 H4xX0r terminal (mod-x)
     , ((myModMask, xK_x), spawn "/home/pjf/bin/cool-retro-term")
+
+    -- Bluetooth resync
+    , ((myModMask, xK_s), spawn "/home/pjf/bin/bluetooth-resync")
   ]
 
 

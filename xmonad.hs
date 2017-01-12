@@ -93,8 +93,8 @@ myWorkspaces =
   [
     "7:FFox",  "8:Mail", "9:Chat",
     "4:Dev",   "5:Dev",  "6:Music",
-    "1:FBook", "2:Pix",  "3:Games",
-    "0:Dev",   "Extr1",  "Extr2"
+    "1:FBook", "2:Pix",  "3:Steam",
+    "0:Dev",   "Extr1",  "Game"
   ]
 
 startupWorkspace = "4:Dev"  -- which workspace do you want to be on after launch?
@@ -279,6 +279,11 @@ myKeyBindings =
       editing images.
 -}
 
+-- Some things start off floating, when we want them to be tiled.
+-- This lets us enforce tiled-on-start.
+doSink :: ManageHook
+doSink = doF . W.sink =<< ask
+
 myManagementHooks :: [ManageHook]
 myManagementHooks = [
   resource =? "synapse" --> doIgnore
@@ -286,10 +291,12 @@ myManagementHooks = [
   , className =? "rdesktop" --> doFloat
   , className =? "Firefox" --> doF (W.shift "7:FFox")
   , className =? "chromium-browser" --> doF (W.shift "1:FBook")
-  , className =? "Steam" --> doF (W.shift "3:Games")
+  , className =? "Steam" --> doF (W.shift "3:Steam")
   , className =? "banshee" --> doF (W.shift "6:Music")
-  -- sometimes the class name is banshee-1
   , className =? "banshee-1" --> doF (W.shift "6:Music")
+
+  -- TODO: Get the XCOM2 launcher to move to Game as well.
+  , className =? "XCOM2" --> doF (W.shift "Game") <+> doSink
 
   , (className =? "Komodo IDE") --> doF (W.shift "5:Dev")
   , (className =? "Komodo IDE" <&&> resource =? "Komodo_find2") --> doFloat

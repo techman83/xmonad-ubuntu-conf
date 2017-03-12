@@ -298,6 +298,7 @@ myManagementHooks = [
   -- TODO: Get the XCOM2 launcher to move to Game as well.
   , className =? "XCOM2" --> doF (W.shift "Game") <+> doSink
   , title     =? "PULSAR Lost Colony" --> doF (W.shift "Game")
+  , title     =? "Turmoil" --> doF (W.shift "Game")
 
   , (className =? "Komodo IDE") --> doF (W.shift "5:Dev")
   , (className =? "Komodo IDE" <&&> resource =? "Komodo_find2") --> doFloat

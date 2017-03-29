@@ -37,6 +37,9 @@ import qualified XMonad.StackSet as W
 import qualified Data.Map as M
 import Data.Ratio ((%))
 
+-- This gives us nice XF86 keynames
+import Graphics.X11.ExtraTypes.XF86
+
 {-
   Xmonad configuration variables. These settings control some of the
   simpler parts of xmonad's behavior and are straightforward to tweak.
@@ -205,24 +208,30 @@ myLayouts =
 myKeyBindings =
   [
       ((myModMask, xK_b), sendMessage ToggleStruts)       -- Hides xmobar
-    , ((myModMask, xK_a), sendMessage MirrorShrink)
-    , ((myModMask, xK_z), sendMessage MirrorExpand)
+    , ((myModMask, xK_a), sendMessage MirrorShrink)       -- Shrink minor window
+    , ((myModMask, xK_z), sendMessage MirrorExpand)       -- Expand minor window
     , ((myModMask, xK_p), spawn "synapse")
     , ((myModMask .|. mod1Mask, xK_space), spawn "synapse")
     , ((myModMask, xK_u), focusUrgent)
     , ((myModMask .|. mod1Mask, xK_l), spawn "slock")    -- Screen lock
 
     -- Volume control keys
-    , ((0, 0x1008FF12), spawn "amixer -q set Master toggle")
-    , ((0, 0x1008FF11), spawn "amixer -q set Master 10%-")
-    , ((0, 0x1008FF13), spawn "amixer -q set Master 10%+")
+    , ((0, xF86XK_AudioMute),        spawn "amixer -q set Master toggle")
+    , ((0, xF86XK_AudioLowerVolume), spawn "amixer -q set Master 10%-")
+    , ((0, xF86XK_AudioRaiseVolume), spawn "amixer -q set Master 10%+")
 
-    -- I use Banshee as my music player. You may wish to bind the multimedia
-    -- keys to something different.
-    , ((0, 0x1008FF14), spawn "amixer -q set Master 10%-")      -- Fn-down
-    , ((0, 0x1008FF15), spawn "amixer -q set Master 10%+")      -- Fn-up
-    , ((0, 0x1008FF16), spawn "banshee --previous")             -- Fn-left
-    , ((0, 0x1008FF17), spawn "banshee --next")                 -- Fn-right
+    -- Magic + Up/down are is my alternate volume.
+    , ((myModMask, xK_Up),   spawn "amixer -q set Master 10%+")
+    , ((myModMask, xK_Down), spawn "amixer -q set Master 10%-")
+
+    -- cmus music controls.
+    , ((0, xF86XK_AudioPrev),  spawn "cmus-remote --prev")
+    , ((0, xF86XK_AudioNext),  spawn "cmus-remote --next")
+
+    -- I don't believe in stop/play. This may change in the future.
+    , ((0, xF86XK_AudioPlay),  spawn "cmus-remote --pause")
+    , ((0, xF86XK_AudioPause), spawn "cmus-remote --pause")
+    , ((0, xF86XK_AudioStop),  spawn "cmus-remote --pause")
 
     -- P57W workarounds. The Fn-keys on my laptop do squat.
     , ((myModMask, xK_F3), spawn "xbacklight -dec 10")
@@ -360,7 +369,13 @@ myKeys = myKeyBindings ++
     ((m .|. myModMask, k), windows $ f i)
        | (i, k) <- zip myWorkspaces numKeys
        , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]
-  ] ++
+  ]
+
+  {-
+   - Turns out I don't like using arrow-keys to navigate workspaces,
+   - so we've disabled them here so I can use them for music controls.
+
+  ++
   M.toList (planeKeys myModMask (Lines 4) Finite) ++
   [
     ((m .|. myModMask, key), screenWorkspace sc
@@ -368,6 +383,8 @@ myKeys = myKeyBindings ++
       | (key, sc) <- zip [xK_w, xK_e, xK_r] [1,0,2]
       , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]
   ]
+
+  -}
 
 
 {-

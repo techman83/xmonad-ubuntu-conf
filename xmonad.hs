@@ -32,7 +32,7 @@ import XMonad.Actions.Plane
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.UrgencyHook
 import XMonad.Hooks.ICCCMFocus
-import XMonad.Hooks.EwmhDesktops    -- Support wmctrl
+import XMonad.Hooks.EwmhDesktops    -- Support wmctrl, obs, and listing windows
 import qualified XMonad.StackSet as W
 import qualified Data.Map as M
 import Data.Ratio ((%))
@@ -388,6 +388,21 @@ myKeys = myKeyBindings ++
 
 
 {-
+  Extended Window Manager Hints (ewmh) are needed for some of the functionality
+  we need, like screen-sharing individual windows using obs and other tools. However
+  by default it *also* allows applications to steal focus, which I never, ever,
+  *ever* want.
+
+  This makes our ewmh wrapper which only supplies the good features.
+-}
+
+myEwmh :: XConfig a -> XConfig a
+myEwmh c = c { startupHook     = startupHook c     <+> ewmhDesktopsStartup
+             , logHook         = logHook c         <+> ewmhDesktopsLogHook
+             -- But not ewmhDesktopsEventHook, because it's awful!
+             }
+
+{-
   Here we actually stitch together all the configuration settings
   and run xmonad. We also spawn an instance of xmobar and pipe
   content into it via the logHook.
@@ -395,7 +410,7 @@ myKeys = myKeyBindings ++
 
 main = do
   xmproc <- spawnPipe "xmobar ~/.xmonad/xmobarrc"
-  xmonad $ withUrgencyHook NoUrgencyHook $ ewmh defaultConfig {
+  xmonad $ withUrgencyHook NoUrgencyHook $ myEwmh defaultConfig {
     focusedBorderColor = myFocusedBorderColor
   , normalBorderColor = myNormalBorderColor
   , terminal = myTerminal

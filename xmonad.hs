@@ -178,6 +178,7 @@ gimpLayout = smartBorders(avoidStruts(ThreeColMid 1 (3/100) (3/4)))
 myLayouts =
     onWorkspace "9:Chat" chatLayout
   $ onWorkspace "2:Pix" gimpLayout
+  $ onWorkspace "Game" (noBorders Full)
   $ defaultLayouts
 
 
@@ -309,6 +310,7 @@ myManagementHooks = [
   , title     =? "PULSAR Lost Colony" --> doF (W.shift "Game")
   , title     =? "Turmoil" --> doF (W.shift "Game")
   , className =? "Avadon-x86" --> doF (W.shift "Game") <+> doSink
+  , title     =? "TheLongDark" --> doF (W.shift "Game") <+> doSink 
 
   , (className =? "Komodo IDE") --> doF (W.shift "5:Dev")
   , (className =? "Komodo IDE" <&&> resource =? "Komodo_find2") --> doFloat

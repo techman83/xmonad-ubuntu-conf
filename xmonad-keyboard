@@ -1,0 +1,30 @@
+#!/bin/sh
+#
+# This runs when xmonad starts up, but is also required when I plug in my Model M.
+
+# Swap Windows and Capslock keys, because I like to use
+# Capslock as the modifier key.
+
+xmodmap -e "keycode 66 = Super_L"
+xmodmap -e "keycode 133 = Caps_Lock"
+
+xmodmap -e "clear Mod4"
+xmodmap -e "clear Lock"
+
+# Super xmonad key is Mod4, which is now capslock.
+xmodmap -e "add Mod4 = Super_L"
+
+# Set the extra backslash key on my keyboard to
+# be the compose key instead. Ditto for the menu
+# key on my new laptop.
+xmodmap -e "keycode 94 = Multi_key"
+xmodmap -e "keycode 135 = Multi_key"
+
+# And also I guess right-alt, because my Model-M doesn't have
+# enough keys.
+
+xmodmap -e "keycode 108 = Multi_key"
+
+# Mod1 is alt
+xmodmap -e "clear Mod1"
+xmodmap -e "add Mod1 = Alt_L"

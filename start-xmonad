@@ -99,22 +99,13 @@ stalonetray \
 # certificates and the like.
 gnome-keyring-daemon --start --components=gpg,pkcs11,secrets,ssh
 
-# Swap Windows and Capslock keys, because I like to use
-# Capslock as the modifier key.
+#
+# KEYBOARD CONFIG
+# 
+# Moved out to a separate script because it also needs to be run when new
+# keyboards are plugged in.
 
-xmodmap -e "keycode 66 = Super_L"
-xmodmap -e "keycode 133 = Caps_Lock"
-
-xmodmap -e "clear Mod4"
-xmodmap -e "clear Lock"
-
-xmodmap -e "add Mod4 = Super_L"
-
-# Set the extra backslash key on my keyboard to
-# be the compose key instead. Ditto for the menu
-# key on my new laptop.
-xmodmap -e "keycode 94 = Multi_key"
-xmodmap -e "keycode 135 = Multi_key"
+~/.xmonad/xmonad-keyboard
 
 # Now, finally, start xmonad
 exec xmonad

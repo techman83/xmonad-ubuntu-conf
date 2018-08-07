@@ -226,13 +226,13 @@ myKeyBindings =
     , ((myModMask, xK_Down), spawn "amixer -q set Master 10%-")
 
     -- cmus music controls.
-    , ((0, xF86XK_AudioPrev),  spawn "cmus-remote --prev")
-    , ((0, xF86XK_AudioNext),  spawn "cmus-remote --next")
+    , ((0, xF86XK_AudioPrev),  spawn "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous")
+    , ((0, xF86XK_AudioNext),  spawn "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next")
 
     -- I don't believe in stop/play. This may change in the future.
-    , ((0, xF86XK_AudioPlay),  spawn "cmus-remote --pause")
-    , ((0, xF86XK_AudioPause), spawn "cmus-remote --pause")
-    , ((0, xF86XK_AudioStop),  spawn "cmus-remote --pause")
+    , ((0, xF86XK_AudioPlay),  spawn "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause")
+    , ((0, xF86XK_AudioPause), spawn "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause")
+    , ((0, xF86XK_AudioStop),  spawn "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause")
 
     -- P57W workarounds. The Fn-keys on my laptop do squat.
     , ((myModMask, xK_F3), spawn "xbacklight -dec 10")
